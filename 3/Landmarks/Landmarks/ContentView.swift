@@ -1,23 +1,20 @@
 //
-//  LandmarkDetail.swift
+//  ContentView.swift
 //  Landmarks
 //
-//  Created by Kertész Jenő Ármin on 2021. 10. 05..
+//  Created by Kristof Varga on 2021. 09. 28..
 //
 
 import SwiftUI
 
-struct LandmarkDetail: View {
-    
-    var landmark: Landmark
-    
+struct ContentView: View {
     var body: some View {
         VStack {
             
-            MapView(coordinate: landmark.locationCoordinate)
+            MapView()
                 .frame(height: 300)
             
-            CircleImage(image: landmark.image)
+            CircleImage()
                 .offset(y: -130)
                 .padding(.bottom, -130)
             
@@ -49,8 +46,8 @@ struct LandmarkDetail: View {
     }
 }
 
-struct LandmarkDetail_Previews: PreviewProvider {
+struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        LandmarkDetail(landmark: landmarks[0])
+        ContentView()
     }
 }
