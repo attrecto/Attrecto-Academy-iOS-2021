@@ -6,21 +6,26 @@
 //
 
 import Foundation
+import Combine
 
-var landmarks: [Landmark] = Parser().parse()
+final class ModelData: ObservableObject {
+    @Published var landmarks: [Landmark] = Parser().parse(resource: "landmarkData.json")
+}
+
+var previewlandmarks: [Landmark] = Parser().parse(resource: "landmarkData.json")
 
 struct Parser<T: Codable> {
     
-    private func getData() throws -> Data {
-        guard let file = Bundle.main.url(forResource: "landmarkData.json", withExtension: nil) else {
-            fatalError("Could not find landmarkData.json")
+    private func getData(resource: String) throws -> Data {
+        guard let file = Bundle.main.url(forResource: resource, withExtension: nil) else {
+            fatalError("Could not find \(resource)")
         }
         return try Data(contentsOf: file)
     }
     
-    func parse() -> T {
+    func parse(resource: String) -> T {
         do {
-            let data = try getData()
+            let data = try getData(resource: resource)
             let decoder = JSONDecoder()
             return try decoder.decode(T.self, from: data)
         } catch let error {
