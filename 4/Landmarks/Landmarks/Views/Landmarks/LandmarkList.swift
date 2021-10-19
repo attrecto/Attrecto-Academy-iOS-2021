@@ -14,7 +14,7 @@ struct LandmarkList: View {
     
     var filteredLandmarks: [Landmark] {
         modelData.landmarks.filter { landmark in
-            (!showFavoritesOnly || landmark.isFavorite)
+            (!showFavoritesOnly || landmark.isFavourite)
         }
     }
     

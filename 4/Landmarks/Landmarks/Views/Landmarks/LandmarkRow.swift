@@ -18,7 +18,7 @@ struct LandmarkRow: View {
             Text(landmark.name)
             Spacer()
             
-            if landmark.isFavorite {
+            if landmark.isFavourite {
                 Image(systemName: "star.fill")
                     .foregroundColor(.yellow)
             }

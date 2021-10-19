@@ -38,7 +38,7 @@ struct LandmarkDetail: View {
                         
                         Spacer()
                         
-                        FavoriteButton(isSet: $modelData.landmarks[landmarkIndex].isFavorite)
+                        FavoriteButton(isSet: $modelData.landmarks[landmarkIndex].isFavourite)
                     }
                     
                     HStack {
