@@ -10,6 +10,16 @@ import Combine
 
 final class ModelData: ObservableObject {
     @Published var landmarks: [Landmark] = Parser().parse(resource: "landmarkData.json")
+    
+    var features: [Landmark] {
+        landmarks.filter { $0.isFeatured }
+    }
+    
+    var categories: [String: [Landmark]] {
+        Dictionary(grouping: landmarks) { landmark in
+            landmark.category.rawValue
+        }
+    }
 }
 
 var previewlandmarks: [Landmark] = Parser().parse(resource: "landmarkData.json")
